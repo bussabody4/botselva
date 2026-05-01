@@ -15,7 +15,6 @@ SshId = io.popen("echo $SSH_CLIENT ︙ awk '{ print $1}'"):read('*a')
 Fx = require 'td'
 local Fasttt = require('td') 
 local client = Fasttt()
-local tdf = Fx.xnxx()
 local FileInformation = io.open("./Information.lua","r")
 if not FileInformation then
 if not Redis:get(SshId.."Info:Redis:Token") then
