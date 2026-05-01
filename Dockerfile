@@ -1,21 +1,24 @@
-FROM alpine:3.18
+FROM alpine:3.15
 
-# 1. تثبيت الأدوات اللازمة لبناء المكتبات داخل السيرفر
+# تثبيت التبعيات الأساسية
 RUN apk add --no-cache \
     lua5.3 \
-    lua5.3-dev \
-    build-base \
-    cmake \
+    lua5.3-libs \
+    lua-socket \
+    lua-sec \
     git \
-    openssl-dev \
-    zlib-dev \
-    gperf
+    build-base \
+    lua5.3-dev \
+    luarocks
 
-# 2. تجهيز مجلد العمل
+# تثبيت المكتبات البرمجية التي يطلبها الكود (serpent, dkjson, redis)
+RUN luarocks-5.3 install serpent && \
+    luarocks-5.3 install dkjson && \
+    luarocks-5.3 install redis-lua && \
+    luarocks-5.3 install luautf8
+
 WORKDIR /app
-
-# 3. نسخ ملفاتك (بدون الملف الكبير tdlua.so)
 COPY . .
 
-# 4. أمر تشغيل البوت (تأكد أن اسم ملفك هو bot.lua)
+# تشغيل البوت
 CMD ["lua5.3", "bot.lua"]
