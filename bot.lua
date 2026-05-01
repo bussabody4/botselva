@@ -2,15 +2,17 @@
 تـيـممؤ
 ]]--
 
-URL     = require("./libs/url")
-JSON    = require("./libs/dkjson")
-serpent = require("libs/serpent")
-json = require('libs/json')
-Redis = require('libs/redis').connect('127.0.0.1', 6379)
+URL     = require("url")
+JSON    = require("dkjson")
+serpent = require("serpent")
+json = require('json')
+local redis_url = os.getenv("REDIS_URL") or "redis://127.0.0.1:6379"
+Redis = require('redis').connect(redis_url)
+
 http  = require("socket.http")
 https   = require("ssl.https")
 SshId = io.popen("echo $SSH_CLIENT ︙ awk '{ print $1}'"):read('*a')
-Fx = require './libs/td'
+Fx = require 'td'
 local Fasttt =  require('tdlua') 
 local client = Fasttt()
 local tdf = Fx.xnxx()
