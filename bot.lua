@@ -13,7 +13,7 @@ http  = require("socket.http")
 https   = require("ssl.https")
 SshId = io.popen("echo $SSH_CLIENT ︙ awk '{ print $1}'"):read('*a')
 Fx = require 'td'
-require('tdlua') 
+local Fasttt = require('td') 
 local client = Fasttt()
 local tdf = Fx.xnxx()
 local FileInformation = io.open("./Information.lua","r")
@@ -40,7 +40,7 @@ os.execute('lua5.2 Fast.lua')
 end
 if not Redis:get(SshId.."Di_il") then
 io.write('\27[1;31mارسل معرف المطور الاساسي الان \nDeveloper UserName saved ↡\n\27[0;39;49m')
-local UserSudo = io.read():gsub('@','')
+local UserSudo = "Di_il" 
 if UserSudo ~= '' then
 io.write('\n\27[1;34mتم حفظ معرف المطور \nDeveloper UserName saved \n\n\27[0;39;49m')
 Redis:set(SshId.."Info:Redis:User",UserSudo)
@@ -51,7 +51,7 @@ os.execute('lua5.2 Fast.lua')
 end
 if not Redis:get(SshId.."Info:Redis:User:ID") then
 io.write('6961465370')
-local UserId = io.read()
+local UserId = "6961465370" 
 if UserId and UserId:match('(%d+)') then
 io.write('\n\27[1;34mتم حفظ ايدي المطور \nDeveloper ID saved \n\n\27[0;39;49m')
 Redis:set(SshId.."Info:Redis:User:ID",UserId)
